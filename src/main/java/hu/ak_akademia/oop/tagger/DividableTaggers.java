@@ -1,29 +1,29 @@
 package hu.ak_akademia.oop.tagger;
 
-import hu.ak_akademia.oop.fizzbuzz.Numbers;
-
-import java.util.List;
-
 public class DividableTaggers {
-    private Integer number;
+    private Integer dividableNumberForTaggers;
 
-    public DividableTaggers(Integer number) {
-        this.number = number;
-    }
-
-    public boolean isDividable5() {
-        return number % 5 == 0;
-    }
-
-    public boolean isDividable3() {
-        return number % 3 == 0;
+    public DividableTaggers(Integer dividableNumberForTaggers) {
+        this.dividableNumberForTaggers = dividableNumberForTaggers;
     }
 
     @Override
     public String toString() {
         String string = "";
-        if (isDividable3()) { string += " Fizz"; }
-        if (isDividable5()) { string += " Buzz"; }
+        switch (dividableNumberForTaggers) {
+            case 3:
+                string += " Fizz";
+                break;
+            case 5:
+                string += " Buzz";
+                break;
+            case 7:
+                string += " Chirpy";
+                break;
+            default:
+                string += "";
+                break;
+        }
         return string;
     }
 }

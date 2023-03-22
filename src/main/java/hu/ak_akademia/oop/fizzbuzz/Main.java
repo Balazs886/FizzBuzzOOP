@@ -1,5 +1,6 @@
 package hu.ak_akademia.oop.fizzbuzz;
 
+import hu.ak_akademia.oop.tagger.DividableChecker;
 import hu.ak_akademia.oop.tagger.DividableTaggers;
 
 import java.util.ArrayList;
@@ -35,8 +36,20 @@ public class Main {
         while (numbersIterator.hasNext()) {
             Integer nextElement = numbersIterator.next();
             System.out.printf("%4d", nextElement);
-            DividableTaggers dividableTaggers = new DividableTaggers(nextElement);
-            System.out.println(dividableTaggers);
+
+            DividableChecker dividable3 = new DividableChecker(nextElement, 3);
+            DividableChecker dividable5 = new DividableChecker(nextElement, 5);
+            DividableChecker dividable7 = new DividableChecker(nextElement, 7);
+
+            DividableTaggers dividableTaggers3 = new DividableTaggers(dividable3.isDividable());
+            System.out.print(dividableTaggers3);
+            DividableTaggers dividableTaggers5 = new DividableTaggers(dividable5.isDividable());
+            System.out.print(dividableTaggers5);
+            DividableTaggers dividableTaggers7 = new DividableTaggers(dividable7.isDividable());
+            System.out.print(dividableTaggers7);
+
+            System.out.println();
+
         }
 
     }
