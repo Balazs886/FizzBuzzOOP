@@ -9,25 +9,28 @@ public class Numbers implements Iterable<Integer> {
     int arrayPointer = 0;
     private List<Integer> numbers = new ArrayList<>();
 
+    // TODO: 2023. 03. 23. nem tudom, hogy minek ez az osztaly es hogy hogy akarod feltotleni, ezert ide teszem ezt az feltoltest
+    {
+        numbers.add(1);
+        numbers.add(2);
+        numbers.add(3);
+        numbers.add(5);
+        numbers.add(10);
+        numbers.add(15);
+        numbers.add(21);
+        numbers.add(24);
+        numbers.add(49);
+        numbers.add(80);
+        numbers.add(105);
+        numbers.add(155);
+        numbers.add(155);
+    }
     public Numbers(int upperLimit) {
         this.upperLimit = upperLimit;
     }
 
     @Override
     public Iterator<Integer> iterator() {
-        return new Iterator<Integer>() {
-
-            @Override
-            public boolean hasNext() {
-                return arrayPointer + 1 <= upperLimit;
-            }
-
-            @Override
-            public Integer next() {
-                arrayPointer++;
-                numbers.add(arrayPointer);
-                return arrayPointer;
-            }
-        };
+        return numbers.iterator();
     }
 }

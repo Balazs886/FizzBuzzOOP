@@ -12,49 +12,19 @@ public class Main {
 
     public static void main(String[] args) {
 
-        List<Integer> lofaszLista = new ArrayList<>();
-        lofaszLista.add(1);
-        lofaszLista.add(2);
-        lofaszLista.add(3);
-        lofaszLista.add(4);
-
-//        for (String element : lofaszLista) {
-//            System.out.println(element);
-//        }
-        Iterator<Integer> lofaszListaIterator = lofaszLista.iterator();
-
-        while (lofaszListaIterator.hasNext()) {
-            System.out.println(lofaszListaIterator.next());
-        }
-
-
         System.out.println("Add meg a felső határt (50 ≤ N ≤ 1000)");
         Numbers numbers = new Numbers(giveUpperLimit());
 
-        Iterator<Integer> numbersIterator = numbers.iterator();
+        DividableTaggers dividableTaggers = new DividableTaggers();
 
-        while (numbersIterator.hasNext()) {
-            Integer nextElement = numbersIterator.next();
-            System.out.printf("%4d", nextElement);
-
-            DividableChecker dividable3 = new DividableChecker(nextElement, 3);
-            DividableChecker dividable5 = new DividableChecker(nextElement, 5);
-            DividableChecker dividable7 = new DividableChecker(nextElement, 7);
-
-            DividableTaggers dividableTaggers3 = new DividableTaggers(dividable3.isDividable());
-            System.out.print(dividableTaggers3);
-            DividableTaggers dividableTaggers5 = new DividableTaggers(dividable5.isDividable());
-            System.out.print(dividableTaggers5);
-            DividableTaggers dividableTaggers7 = new DividableTaggers(dividable7.isDividable());
-            System.out.print(dividableTaggers7);
-
-            System.out.println();
-
+        for (Integer number : numbers) {
+            System.out.format("%4d%s\n", number, dividableTaggers.generateTaggers(number));
         }
 
     }
 
     private static int giveUpperLimit() {
+        // TODO: 2023. 03. 23. ez mi a bánat?
         Scanner scanner = new Scanner(System.in);
         int upperLimit;
         boolean firstRun = true;

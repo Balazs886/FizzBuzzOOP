@@ -1,29 +1,24 @@
 package hu.ak_akademia.oop.tagger;
 
-public class DividableTaggers {
-    private Integer dividableNumberForTaggers;
+import java.util.ArrayList;
+import java.util.List;
 
-    public DividableTaggers(Integer dividableNumberForTaggers) {
-        this.dividableNumberForTaggers = dividableNumberForTaggers;
+public class DividableTaggers {
+    private List<DividableConfig> configs = new ArrayList<>();
+
+    {
+        configs.add(new DividableConfig(new DividableChecker(3), " Fizz"));
+        configs.add(new DividableConfig(new DividableChecker(5), " Buzz"));
+        configs.add(new DividableConfig(new DividableChecker(7), " Chirpy"));
     }
 
-    @Override
-    public String toString() {
-        String string = "";
-        switch (dividableNumberForTaggers) {
-            case 3:
-                string += " Fizz";
-                break;
-            case 5:
-                string += " Buzz";
-                break;
-            case 7:
-                string += " Chirpy";
-                break;
-            default:
-                string += "";
-                break;
+    public String generateTaggers(Integer number) {
+        String result = "";
+        for (DividableConfig config : configs) {
+            if (config.getDividableChecker().isDividable(number)) {
+                result += config.getDecoratorText();
+            }
         }
-        return string;
+        return result;
     }
 }
